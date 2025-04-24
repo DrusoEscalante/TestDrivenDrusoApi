@@ -71,5 +71,11 @@ namespace TestDrivenDrusoApi.Controllers
                 return StatusCode(500,"not good");
             }
         }
+
+        [HttpGet("getCustomers")]
+        public IActionResult getCustomers()
+        {
+            return Ok(_myContext.Customers.ToList());
+        }
     }
 }

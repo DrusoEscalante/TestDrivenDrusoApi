@@ -9,7 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<MyContext>(options =>
-    options.UseSqlServer("Data Source=CS-21\\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True"));
+    options.UseSqlServer("Data Source=CS-21\\SQLEXPRESS;Integrated Security=True;Database = TDD;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True"));
 
 var app = builder.Build();
 
