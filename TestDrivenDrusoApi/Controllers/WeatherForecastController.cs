@@ -1,6 +1,7 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 using TestDrivenDrusoApi.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace TestDrivenDrusoApi.Controllers
 {
@@ -77,5 +78,17 @@ namespace TestDrivenDrusoApi.Controllers
         {
             return Ok(_myContext.Customers.ToList());
         }
+
+
+        [HttpDelete("DeleteUser")]
+
+        public void deleteUser(int Id)
+        {
+            _myContext.Customers.Where((x) => x.CustomerId == Id).ExecuteDelete();
+
+            _myContext.SaveChanges();
+        }
     }
+
+  
 }
