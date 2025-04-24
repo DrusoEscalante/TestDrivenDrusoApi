@@ -30,5 +30,11 @@ namespace TestDrivenDrusoApi.Controllers
             })
             .ToArray();
         }
+
+        [HttpGet("Test")]
+        public IActionResult getTest()
+        {
+            return Ok("Hello");
+        }
     }
 }
