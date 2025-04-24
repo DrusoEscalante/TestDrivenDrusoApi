@@ -1,4 +1,4 @@
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TestDrivenDrusoApi.Controllers
@@ -41,7 +41,7 @@ namespace TestDrivenDrusoApi.Controllers
         [HttpGet("testConnection")]
         public IActionResult testConnection()
         {
-            string connectionString = "fake";
+            string connectionString = "Data Source=CS-21\\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
             try
             {
                 using var connection = new SqlConnection(connectionString);
