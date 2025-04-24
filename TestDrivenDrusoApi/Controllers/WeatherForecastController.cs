@@ -1,3 +1,4 @@
+using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TestDrivenDrusoApi.Controllers
@@ -35,6 +36,22 @@ namespace TestDrivenDrusoApi.Controllers
         public IActionResult getTest()
         {
             return Ok("Hello");
+        }
+
+        [HttpGet("testConnection")]
+        public IActionResult testConnection()
+        {
+            string connectionString = "fake";
+            try
+            {
+                using var connection = new SqlConnection(connectionString);
+                connection.Open();
+                return Ok("Connected");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500);
+            }
         }
     }
 }
