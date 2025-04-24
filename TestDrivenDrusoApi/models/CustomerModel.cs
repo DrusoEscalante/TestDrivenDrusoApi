@@ -10,6 +10,8 @@ namespace TestDrivenDrusoApi.models
         [Key]
         [Column("CustomerId")]
         public long CustomerId { get; set; }
+        [Column("CustomerName")]
+        public string? CustomerName { get; set; }
 
     }
 }
