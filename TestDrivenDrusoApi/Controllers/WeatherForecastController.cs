@@ -13,7 +13,7 @@ namespace TestDrivenDrusoApi.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        //TEst
+        //test
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
