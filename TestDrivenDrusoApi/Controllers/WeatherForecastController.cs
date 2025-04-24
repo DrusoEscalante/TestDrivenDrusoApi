@@ -1,5 +1,6 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
+using TestDrivenDrusoApi.Data;
 
 namespace TestDrivenDrusoApi.Controllers
 {
@@ -7,6 +8,10 @@ namespace TestDrivenDrusoApi.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        private readonly MyContext _myContext;
+
+
+       
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -15,9 +20,10 @@ namespace TestDrivenDrusoApi.Controllers
         private readonly ILogger<WeatherForecastController> _logger;
 
         //test
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger,MyContext context)
         {
             _logger = logger;
+            _myContext = context;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -51,6 +57,18 @@ namespace TestDrivenDrusoApi.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500);
+            }
+        }
+
+        [HttpGet("testContext")]
+        public IActionResult testContext()
+        {
+            if (_myContext != null)
+            {
+                return Ok("nice");
+            }
+            else {
+                return StatusCode(500,"not good");
             }
         }
     }
