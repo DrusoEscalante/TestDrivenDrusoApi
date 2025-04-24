@@ -1,3 +1,6 @@
+using TestDrivenDrusoApi.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,7 +11,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
+builder.Services.AddDbContext<MyContext>(options =>
+options.UseSqlServer("Data Source=CS-21\\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False"));
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
